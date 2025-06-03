@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mcnz-ntt-demo/static/css/main.13f86a39.css",
+    "main.js": "/mcnz-ntt-demo/static/js/main.d3701bfd.js",
+    "index.html": "/mcnz-ntt-demo/index.html",
+    "main.13f86a39.css.map": "/mcnz-ntt-demo/static/css/main.13f86a39.css.map",
+    "main.d3701bfd.js.map": "/mcnz-ntt-demo/static/js/main.d3701bfd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.13f86a39.css",
+    "static/js/main.d3701bfd.js"
+  ]
+}
