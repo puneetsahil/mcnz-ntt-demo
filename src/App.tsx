@@ -121,11 +121,45 @@ function App() {
     <div className="container">
       <header style={{ marginBottom: '30px', textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-          <img 
-            src="/mcnz-logo.svg" 
-            alt="MCNZ Logo" 
-            style={{ height: '60px', marginRight: '20px' }}
-          />
+          <div style={{ 
+            width: '80px', 
+            height: '60px', 
+            backgroundColor: '#003366', 
+            borderRadius: '8px',
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            marginRight: '20px',
+            flexDirection: 'column'
+          }}>
+            <div style={{ 
+              width: '30px', 
+              height: '30px', 
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div style={{ 
+                width: '6px', 
+                height: '20px', 
+                backgroundColor: '#ffffff',
+                position: 'absolute'
+              }}></div>
+              <div style={{ 
+                width: '20px', 
+                height: '6px', 
+                backgroundColor: '#ffffff',
+                position: 'absolute'
+              }}></div>
+            </div>
+            <div style={{ 
+              color: '#ffffff', 
+              fontSize: '10px', 
+              fontWeight: 'bold',
+              marginTop: '4px'
+            }}>MCNZ</div>
+          </div>
           <div style={{ textAlign: 'left' }}>
             <h1 style={{ margin: '0', fontSize: '28px' }}>MCNZ Notifications Triage Team</h1>
             <p style={{ color: '#6c757d', fontSize: '16px', margin: '4px 0 0 0' }}>
