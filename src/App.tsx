@@ -83,7 +83,7 @@ function App() {
     return (
       <div className="container">
         <header style={{ marginBottom: '30px', textAlign: 'center' }}>
-          <h1>MCNZ Notifications Triage Team - Demo</h1>
+          <h1>MCNZ Notifications Triage Team</h1>
           <nav style={{ marginTop: '20px' }}>
             <button className="btn btn-secondary" onClick={() => setCurrentView('dashboard')}>
               ← Back to Dashboard
@@ -99,7 +99,7 @@ function App() {
     return (
       <div className="container">
         <header style={{ marginBottom: '30px', textAlign: 'center' }}>
-          <h1>MCNZ Notifications Triage Team - Demo</h1>
+          <h1>MCNZ Notifications Triage Team</h1>
           <nav style={{ marginTop: '20px' }}>
             <button className="btn btn-secondary" onClick={() => {
               setCurrentView('dashboard');
@@ -120,10 +120,19 @@ function App() {
   return (
     <div className="container">
       <header style={{ marginBottom: '30px', textAlign: 'center' }}>
-        <h1>MCNZ Notifications Triage Team - Demo</h1>
-        <p style={{ color: '#6c757d', fontSize: '16px' }}>
-          AI-Assisted Notification Triage System
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+          <img 
+            src="/mcnz-logo.svg" 
+            alt="MCNZ Logo" 
+            style={{ height: '60px', marginRight: '20px' }}
+          />
+          <div style={{ textAlign: 'left' }}>
+            <h1 style={{ margin: '0', fontSize: '28px' }}>MCNZ Notifications Triage Team</h1>
+            <p style={{ color: '#6c757d', fontSize: '16px', margin: '4px 0 0 0' }}>
+              AI-Assisted Notification Triage System
+            </p>
+          </div>
+        </div>
         <nav style={{ marginTop: '20px' }}>
           <button 
             className="btn btn-primary" 
@@ -256,11 +265,23 @@ function App() {
                       </span>
                     </p>
                     <div style={{ margin: '4px 0' }}>
+                      {decision.aiRecommendation && (
+                        <div style={{ marginBottom: '8px' }}>
+                          <p style={{ margin: '0 0 4px 0' }}>
+                            <strong>AI Suggested:</strong> {getOutcomeDescription(decision.aiRecommendation.outcome)} ({Math.round(decision.aiRecommendation.confidence * 100)}% confidence)
+                          </p>
+                          <p style={{ margin: '0', fontSize: '12px', color: '#6c757d', fontStyle: 'italic' }}>
+                            {decision.aiRecommendation.reasoning.split('. ').slice(0, 2).join('. ')}.
+                          </p>
+                        </div>
+                      )}
                       <p style={{ margin: '0 0 4px 0' }}>
-                        <strong>AI Suggested:</strong> {getOutcomeDescription(decision.outcome)} ({Math.round(decision.confidence * 100)}% confidence)
-                      </p>
-                      <p style={{ margin: '0', fontSize: '12px', color: '#6c757d', fontStyle: 'italic' }}>
-                        {decision.reasoning.split('. ').slice(0, 2).join('. ')}.
+                        <strong>Final Decision:</strong> {getOutcomeDescription(decision.outcome)}
+                        {decision.aiRecommendation && decision.outcome !== decision.aiRecommendation.outcome && (
+                          <span style={{ color: '#fd7e14', marginLeft: '8px', fontSize: '12px' }}>
+                            👨‍⚕️ Human Override
+                          </span>
+                        )}
                       </p>
                     </div>
                     <div style={{ 

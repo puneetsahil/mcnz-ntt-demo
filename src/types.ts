@@ -45,6 +45,11 @@ export interface TriageDecision {
   recommendations: string[];
   decidedBy: 'ai' | 'human' | 'consensus';
   decidedAt: string;
+  aiRecommendation?: {
+    outcome: NTTOutcome;
+    reasoning: string;
+    confidence: number;
+  };
 }
 
 export interface AIAnalysis {

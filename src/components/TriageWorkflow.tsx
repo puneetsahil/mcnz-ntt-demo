@@ -33,8 +33,13 @@ export const TriageWorkflow: React.FC<TriageWorkflowProps> = ({ notification, on
       recommendations: aiAnalysis.keyFactors.includes('Pattern of behavior suggested') 
         ? ['Review previous notifications', ...aiAnalysis.reasoningChain.slice(-1)]
         : aiAnalysis.reasoningChain.slice(-1),
-      decidedBy: humanReasoning ? 'human' : 'ai',
-      decidedAt: new Date().toISOString()
+      decidedBy: selectedOutcome === aiAnalysis.recommendedOutcome && !humanReasoning ? 'ai' : 'human',
+      decidedAt: new Date().toISOString(),
+      aiRecommendation: {
+        outcome: aiAnalysis.recommendedOutcome,
+        reasoning: aiAnalysis.reasoningChain.join('. '),
+        confidence: aiAnalysis.confidence
+      }
     };
 
     onDecisionMade(decision);
@@ -257,7 +262,28 @@ export const TriageWorkflow: React.FC<TriageWorkflowProps> = ({ notification, on
           </ol>
         </div>
 
-        <div style={{ marginBottom: '20px' }}>
+        <hr style={{ 
+          margin: '30px 0', 
+          border: 'none', 
+          height: '2px', 
+          background: 'linear-gradient(to right, #007bff, #6c757d, #007bff)',
+          borderRadius: '1px'
+        }} />
+
+        <div style={{ 
+          padding: '20px', 
+          backgroundColor: '#f8f9fa', 
+          borderRadius: '8px',
+          border: '2px solid #007bff',
+          marginBottom: '20px'
+        }}>
+          <h2 style={{ color: '#007bff', marginTop: '0', marginBottom: '16px' }}>
+            👥 NTT Decision
+          </h2>
+          <p style={{ color: '#6c757d', marginBottom: '20px', fontStyle: 'italic' }}>
+            Review the AI analysis above and select the appropriate NTT decision below.
+          </p>
+          
           <h3>Select NTT Decision</h3>
           <ul className="outcome-list">
             {(['no_action', 'education', 'refer_council', 'refer_pcc', 'temporary_limitations'] as NTTOutcome[]).map(outcome => (
