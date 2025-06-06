@@ -1,11 +1,11 @@
-# MCNZ AI-Assisted Notifications Triage System
+# AI-Assisted Notifications Triage System
 ## Presentation
 
 ---
 
 ## 🎯 Executive Summary
 
-**Problem**: MCNZ's Notifications Triage Team (NTT) processes hundreds of fitness-to-practice notifications annually, requiring significant manual effort to assess risk, determine appropriate responses, and ensure consistent decision-making.
+**Problem**: Notifications Triage Team (NTT) processes hundreds of fitness-to-practice notifications annually, requiring significant manual effort to assess risk, determine appropriate responses, and ensure consistent decision-making.
 
 **Solution**: AI-assisted triage system that analyzes notifications, assesses risks, and recommends appropriate outcomes while maintaining human oversight and natural justice principles.
 
