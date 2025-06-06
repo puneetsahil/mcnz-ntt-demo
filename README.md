@@ -54,9 +54,3 @@ The application will open at https://puneetsahil.github.io/mcnz-ntt-demo/
 ## Note
 
 This is a demonstration application showcasing how AI can assist healthcare regulation. It does not connect to real systems and uses simulated data for demo purposes.
-
-## Access
-
-The application requires authentication:
-- Username: `optimation`
-- Password: `0pt1mat10n`
