@@ -1,6 +1,6 @@
-# MCNZ Notifications Triage Team Demo
+# Medical Council Notifications Triage Team System
 
-An AI-driven application for the Medical Council of New Zealand (MCNZ) Notifications Triage Team to assist in processing fitness to practice notifications.
+An AI-driven application for Medical Council Notifications Triage Teams to assist in processing fitness to practice notifications.
 
 ## Features
 
@@ -53,4 +53,10 @@ The application will open at http://localhost:3000
 
 ## Note
 
-This is a demonstration application showcasing how AI can assist healthcare regulation. It does not connect to real MCNZ systems and uses simulated data for demo purposes.
+This is a demonstration application showcasing how AI can assist healthcare regulation. It does not connect to real systems and uses simulated data for demo purposes.
+
+## Access
+
+The application requires authentication:
+- Username: `optimation`
+- Password: `0pt1mat10n`

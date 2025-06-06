@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { NotificationForm } from './components/NotificationForm';
 import { TriageWorkflow } from './components/TriageWorkflow';
+import { LoginForm } from './components/LoginForm';
 import { Notification, TriageDecision } from './types';
 import { sampleNotifications } from './data/sampleNotifications';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [decisions, setDecisions] = useState<TriageDecision[]>([]);
   const [activeNotification, setActiveNotification] = useState<Notification | null>(null);
@@ -31,6 +33,20 @@ function App() {
     }));
     
     setNotifications(prev => [...sampleNotifs, ...prev]);
+  };
+
+  const handleLogin = (success: boolean) => {
+    if (success) {
+      setIsAuthenticated(true);
+    }
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setNotifications([]);
+    setDecisions([]);
+    setActiveNotification(null);
+    setCurrentView('dashboard');
   };
 
   const handleDecisionMade = (decision: TriageDecision) => {
@@ -79,6 +95,10 @@ function App() {
     return descriptions[outcome as keyof typeof descriptions] || outcome;
   };
 
+  if (!isAuthenticated) {
+    return <LoginForm onLogin={handleLogin} />;
+  }
+
   if (currentView === 'submit') {
     return (
       <div className="container">
@@ -87,6 +107,13 @@ function App() {
           <nav style={{ marginTop: '20px' }}>
             <button className="btn btn-secondary" onClick={() => setCurrentView('dashboard')}>
               ← Back to Dashboard
+            </button>
+            <button 
+              className="btn btn-secondary" 
+              onClick={handleLogout}
+              style={{ marginLeft: '10px' }}
+            >
+              Logout
             </button>
           </nav>
         </header>
@@ -106,6 +133,13 @@ function App() {
               setActiveNotification(null);
             }}>
               ← Back to Dashboard
+            </button>
+            <button 
+              className="btn btn-secondary" 
+              onClick={handleLogout}
+              style={{ marginLeft: '10px' }}
+            >
+              Logout
             </button>
           </nav>
         </header>
@@ -158,10 +192,10 @@ function App() {
               fontSize: '10px', 
               fontWeight: 'bold',
               marginTop: '4px'
-            }}>MCNZ</div>
+            }}>MEDI</div>
           </div>
           <div style={{ textAlign: 'left' }}>
-            <h1 style={{ margin: '0', fontSize: '28px' }}>MCNZ Notifications Triage Team</h1>
+            <h1 style={{ margin: '0', fontSize: '28px' }}>Medical Council Notifications Triage Team</h1>
             <p style={{ color: '#6c757d', fontSize: '16px', margin: '4px 0 0 0' }}>
               AI-Assisted Notification Triage System
             </p>
@@ -179,10 +213,17 @@ function App() {
             <button 
               className="btn btn-secondary" 
               onClick={loadSampleData}
+              style={{ marginRight: '10px' }}
             >
               Load Sample Data
             </button>
           )}
+          <button 
+            className="btn btn-secondary" 
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </nav>
       </header>
 
@@ -343,7 +384,7 @@ function App() {
         }}>
           <h3>About This Demo</h3>
           <p>
-            This demonstration shows how AI can assist the MCNZ Notifications Triage Team in processing 
+            This demonstration shows how AI can assist the Medical Council Notifications Triage Team in processing 
             fitness to practice notifications. The system:
           </p>
           <ul>
